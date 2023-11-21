@@ -60,7 +60,7 @@ model Member {
   serverId String
   server   Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
 
-  massages Massage[]
+  messages Message[]
 
   conversationInitiated Conversation[]  @relation("MemberOne")
   conversationReceived  Conversation[]  @relation("MemberTwo")
@@ -89,7 +89,7 @@ model Channel {
 
   serverId String
   server   Server    @relation(fields: [serverId], references: [id], onDelete: Cascade)
-  massages Massage[]
+  messages Message[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -98,7 +98,7 @@ model Channel {
   @@index([serverId])
 }
 
-model Massage {
+model Message {
   id      String @id @default(uuid())
   content String @db.Text
 
